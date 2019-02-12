@@ -1,19 +1,21 @@
-[![Build Status](https://travis-ci.org/jtsay362/chesspresso.png?branch=master)](https://travis-ci.org/jtsay362/chesspresso)
+My fork of chesspresso jtsay362-edition
+I try use it for parsing lichess database
+And had to fix some critical bugs for handle pgn games from lichess.
 
-This was forked from Chesspresso 0.9.2, originally written by Bernhard Seybold.
-His original docs are at: http://www.chesspresso.org/
-
-This fork has the following improvements:
- * PGN parser
-   * Handles file without headers, e.g. (1. e4 d6 2. a3)
-   * Better log output
- * HTML generator
-   * HTML5 output
-   * Safer output (HTML escapes content in game before outputting)
-   * Less polution of the Javascript environment, HTML ID's, and CSS class namespace
-   * Uses Bootstrap 2 or 3 for fonts, buttons, etc.
-   * Style and script section customizable
-   * Uses Freemarker to generate output so much easier to modify
-
-Known problems:
- * Due to the change allowing PGN input without headers, PGNReader tests are failing.
+ 
+ 1. Fix pgn parse bug - appears when two knight can move to same square, but one of them are pinned. 
+    
+    According rules, correct pgn in this case, are not contain knight column, like Nbd5, due only one knight can move.
+    
+    Old code can choose wrong knight, that cause incorrect position.
+    
+    eg: https://lichess.org/S2VYc7Fg#72
+ 2. Adhock for supporting enhanced png syntax like.
+    ``` 1. e4 { [%eval 0.17] [%clk 0:00:30] } 1... c5 { [%eval 0.19] [%clk 0:00:30] } ```
+    
+    Old code recognize % like escape symbol. 
+    
+    But according pgn syntax ,escape mechanizm are triggeres by % "appearing in the firstcolumn of a line"
+    
+    http://rpm.pbone.net/index.php3/stat/45/idpl/19488088/numer/3/nazwa/Games::Chess::PGN
+    
