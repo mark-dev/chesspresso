@@ -1556,8 +1556,6 @@ public final class Position extends AbstractMoveablePosition {
         }
     }
 
-    //There was bug, if 2 knight can move same square, bug one is pinned, this code can choose invalid knight.
-    //eg: https://lichess.org/S2VYc7Fg#72
     private final int getFromSqi(int piece, int colFrom, int rowFrom, int to) {
         long bb = getBitBoard(Chess.pieceToStone(piece, getToPlay()));
         if (colFrom != Chess.NO_COL) {
@@ -1831,7 +1829,7 @@ public final class Position extends AbstractMoveablePosition {
         }
     }
 
-    private boolean attacks(int from, int to) {
+    public boolean attacks(int from, int to) {
         // TODO: replace by is attacked
         int piece = getPiece(from);
         long bbTo = ofSquare(to);
