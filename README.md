@@ -1,6 +1,6 @@
 My fork of chesspresso jtsay362-edition
 
-I try use it for parsing lichess database and had to fix some critical bugs for handle pgn games from lichess.
+I try use chesspresso for [parsing lichess database](https://github.com/mark-dev/chessfactory-hall-of-fame) and had to fix some critical bugs for handle pgn games from lichess.
 
  
  1. Fix pgn parse bug - appears when two knight can move to same square, but one of them are pinned. 
