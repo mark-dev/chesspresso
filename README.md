@@ -5,13 +5,13 @@ I try use chesspresso for [parsing lichess database](https://github.com/mark-dev
  
  1. Fix pgn parse bug - appears when two knight can move to same square, but one of them are pinned. 
     
-    According rules, correct pgn in this case, are not contain knight column, like Nbc2, due only one knight can move.
+    According rules, correct pgn in this case, are not contain knight classifier(column, eg: N**b**c2), due only one knight can move.
     
     Original code can choose wrong knight, that cause incorrect position.
     
     (seems developer forgot about knights when implementing scenario when pinned piece can move across pin direction)
     
-    eg: https://lichess.org/S2VYc7Fg#72
+    example: https://lichess.org/S2VYc7Fg#72
  2. Adhock for supporting enhanced png syntax like.
     ``` 1. e4 { [%eval 0.17] [%clk 0:00:30] } 1... c5 { [%eval 0.19] [%clk 0:00:30] } ```
     
